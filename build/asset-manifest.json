@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.cf9cf4a4.css",
+    "main.js": "/static/js/main.7fe8414c.js",
+    "static/media/auth_background.png": "/static/media/auth_background.635f4402d6668b95302e.png",
+    "static/media/default-profile-image.png": "/static/media/default-profile-image.b11f45a152bb037786cd.png",
+    "index.html": "/index.html",
+    "main.cf9cf4a4.css.map": "/static/css/main.cf9cf4a4.css.map",
+    "main.7fe8414c.js.map": "/static/js/main.7fe8414c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cf9cf4a4.css",
+    "static/js/main.7fe8414c.js"
+  ]
+}

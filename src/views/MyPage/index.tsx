@@ -3,7 +3,7 @@ import './style.css';
 import DefaultProflie from './asset/my_page_profile_default.png';
 import Pagination from 'src/components/Pagination';
 import { usePagination } from 'src/hooks';
-import { MyPageListResponseDto } from 'src/interfaces/response';
+import { BoardListResponseDto, GetUserListResponseDto } from 'src/interfaces/response/board';
 import { myPageBoardListMock } from 'src/mocks';
 import { COUNT_BY_PAGE } from 'src/constants';
 import BoardListItem from 'src/components/BoardListItem';
@@ -87,11 +87,11 @@ export default function MyPage() {
   const MyPageBottom = () => {
     //          state          //
     // description: 전체 게시물 리스트 상태 //
-    const [myPageBoardList, setMyPageBoardList] = useState<MyPageListResponseDto[]>([]);
+    const [myPageBoardList, setMyPageBoardList] = useState<BoardListResponseDto[]>([]);
     // description: 전체 게시물 갯수 상태 //
     const [boardCount, setBoardCount] = useState<number>(0);
     // description: 현재 페이지에서 보여줄 게시물 리스트 상태 //
-    const [pageBoardList, setPageBoardList] = useState<MyPageListResponseDto[]>([]);
+    const [pageBoardList, setPageBoardList] = useState<BoardListResponseDto[]>([]);
     // description: 페이지네이션과 관련된 상태 및 함수 //
     const { totalPage, currentPage, currentSection, onPageClickHandler, onNextClickHandler, onPreviousClickHandler, changeSection } = usePagination();
 
@@ -105,7 +105,7 @@ export default function MyPage() {
         COUNT_BY_PAGE * currentPage : boardCount;
       const pageBoardList = myPageBoardListMock.slice(startIndex, lastIndex);
 
-      setPageBoardList(pageBoardList);
+      setPageBoardList([]);
     }
 
     //          event handler          //
@@ -116,7 +116,7 @@ export default function MyPage() {
     //          effect          //
     // description: 화면 첫 로드시 게시물 리스트 불러오기 //
     useEffect(() => {
-      setMyPageBoardList(myPageBoardListMock);
+      setMyPageBoardList([]);
       setBoardCount(0);
     }, []);
 
@@ -127,7 +127,7 @@ export default function MyPage() {
 
     // description: 현재 섹션이 바뀔때 마다 페이지 리스트 변경 //
     useEffect(() => {
-      changeSection(myPageBoardList.length);
+      changeSection(myPageBoardList.length, COUNT_BY_PAGE);
     }, [currentSection]);
 
     //          render          //
